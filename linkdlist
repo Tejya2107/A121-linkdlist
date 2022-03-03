@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node{
+int data;
+struct node *next;
+
+};
+struct node *front=NULL;
+struct node *rear=NULL;
+void enq(int m)
+{
+  struct node *temp;
+  temp=(struct node *)malloc(sizeof(struct node));
+  temp->data=m;
+  temp->next=NULL;
+  if(rear==NULL)
+  {
+    front=rear=temp;
+  }
+  else{
+    rear->next=temp;
+    rear=rear->next;
+  }
+  }
+  void deq()
+  {
+    if(front==NULL)
+    {
+      printf("\n queue is empty");
+}
+    else
+    {
+      struct node *temp=front;
+      printf("\n %d is dequed",temp->data);
+      front=front->next;
+      free(temp);
+    }
+  }
+void show()
+  {
+    struct node *temp=front;
+    printf("\n elements in queue are :");
+    while(temp!=NULL)
+      {
+        printf("%d",temp->data);
+        temp=temp->next;
+      }
+  }
+
+int main() {
+  enq(10);
+  enq(20);
+  enq(30);
+  enq(40);
+  enq(50);
+  show();
+  deq();
+  deq();
+  show();
+  
+    return 0;
+}
+  
